@@ -1,0 +1,29 @@
+# config.yaml
+
+# LLM服务
+llm:
+  xinference_url: "http://127.0.0.1:9997/v1/completions"
+  model_name: "glm4-chat"
+  max_tokens_breaker: 128
+  max_tokens_trip: 1024
+
+# Streamlit页面
+ui:
+  page_title: "西门子断路器智能选型助手"
+  layout: "centered"
+
+# 文件与数据路径
+data:
+  order_num_json: "data/orderNum.json"
+  breaker_3WA_1: "data/3WA/3WA交流断路器_1.xlsx"
+
+# session key
+session:
+  history: "history"
+  trip_df: "trip_df"
+
+# config.yaml
+log:
+  path: "./logs/llm_parse.log"
+  max_entries: 20
+
