@@ -31,11 +31,11 @@ def run_chat_pipeline(user_input: str, trip_df: pd.DataFrame, sn_order_map: dict
 
     # ===== 2. 脱扣器解析 =====
     result_trip = {}
+    trip_box = st.empty()
+    reply_trip = ""
     if trip_df is not None:
         func_fields = get_function_fields(trip_df, model_col="型号")
         trip_prompt = PARSE_TRIP_TEMPLATE.format(func_fields="\n".join(func_fields), question=user_input)
-        trip_box = st.empty()
-        reply_trip = ""
         for partial in llm_chat_stream(
             user_input, trip_prompt, LLM_CFG["model_name"], LLM_CFG["xinference_url"], max_tokens=LLM_CFG["max_tokens_trip"]):
             reply_trip = partial
@@ -60,12 +60,12 @@ def run_chat_pipeline(user_input: str, trip_df: pd.DataFrame, sn_order_map: dict
             order_no = sn_order_map.get(sn, "未找到订货号")
             table_rows.append({"产品序列号": sn, "订货号": order_no})
 
-        st.markdown("#### 满足条件的产品序列号及订货号：")
+        st.markdown("#### 断路器推荐：")
         st.table(pd.DataFrame(table_rows))
 
         merged_df, not_found = collect_sn_detail_table(sn_list, product_df, sn_to_pattern)
         if merged_df is not None:
-            st.markdown("#### 所有满足条件型号的详细参数：")
+            st.markdown("#### 断路器详细参数：")
             st.table(merged_df)
         if not_found:
             st.warning("以下型号未找到详细参数信息：\n" + "\n".join(not_found))

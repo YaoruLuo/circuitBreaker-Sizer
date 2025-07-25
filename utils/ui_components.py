@@ -50,7 +50,7 @@ def render_chat_history():
             if msg.get("role") == "user" and msg.get("content"):
                 st.markdown(msg["content"], unsafe_allow_html=True)
             elif msg.get("role") == "assistant" and msg.get("table_rows"):
-                st.markdown("#### 满足条件的产品序列号及订货号：")
+                st.markdown("#### 断路器推荐：")
                 df = pd.DataFrame(msg["table_rows"])
                 if not df.empty:
                     st.table(df)
