@@ -107,7 +107,7 @@ def get_breaking_options(level, min_breaking=None):
 def select_all_breaker_models(params: dict):
     current, _ = split_value_unit(params.get("额定电流"))
     pole, pole_unit = split_value_unit(params.get("极数"))
-    mount = params.get("安装方式", None)
+    # mount = params.get("安装方式", None)
     min_breaking, _ = split_value_unit(params.get("分断能力"))
     trip = params.get("推荐脱扣器")
 

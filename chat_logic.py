@@ -39,11 +39,15 @@ def run_chat_pipeline(user_input: str, trip_df: pd.DataFrame, sn_order_map: dict
         for partial in llm_chat_stream(
             user_input, trip_prompt, LLM_CFG["model_name"], LLM_CFG["xinference_url"], max_tokens=LLM_CFG["max_tokens_trip"]):
             reply_trip = partial
-            trip_box.markdown("正在查找合适的脱扣器型号...")
+
+            trip_box.markdown(f"正在解析脱扣器需求...\n\n{reply_trip}")
+            # trip_box.markdown(f"正在解析脱扣器需求...")
         trip_box.markdown("")
+
         result_trip = extract_trip_info_from_output(reply_trip, func_fields)
 
         need = normalize_need_dict(result_trip, func_fields)
+
         filtered = filter_trip_units_strict(trip_df, need, model_col="型号")
         model, _ = select_minimal_trip_model_strict(filtered, model_col="型号")
         result_breaker["推荐脱扣器"] = model if model else "NA"
