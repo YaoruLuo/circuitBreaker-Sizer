@@ -10,7 +10,7 @@
 ### ✅ 环境配置
 
 ```bash
-git clone https://github.com/yourname/circuitBreaker-Sizer.git
+git clone https://github.com/YaoruLuo/circuitBreaker-Sizer.git
 cd circuitBreaker-Sizer
 ```
 
