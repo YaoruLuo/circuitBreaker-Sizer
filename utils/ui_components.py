@@ -3,6 +3,29 @@ import pandas as pd
 from config.config import UI_CFG, SESSION_CFG
 
 
+def render_input_hint():
+    st.markdown(
+        """
+        <div style="
+            font-size: 13px;
+            color: #7b8695;
+            background: #f7f8fa;
+            border-radius: 8px;
+            border: 1px solid #e9eaf2;
+            margin: 10px 0 14px 0;
+            padding: 7px 15px 7px 15px;
+            line-height: 1.7;
+        ">
+        <b style="color:#2e72c5;font-size:13px">💡输入示例：</b>
+        <ul style="padding-left:20px; margin-top:4px;">
+        <li>我需要选择一个额定电流1800A，抽屉式水平安装，3P，分断能力为66kA的断路器，电子脱扣器具备三段保护功能。</li>
+        <li>西门子额定电流为2500A，分断能力100kA，固定式安装，4P的断路器有哪些？脱扣器具备3段保护功能：长延时、短路短延时、短路瞬动。</li>
+        </ul>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
 def init_page():
     """初始化页面信息和标题"""
     st.set_page_config(page_title=UI_CFG["page_title"], layout=UI_CFG["layout"])

@@ -1,7 +1,7 @@
 import streamlit as st
 
 from config.config import DATA_CFG, SESSION_CFG
-from utils.ui_components import init_page, render_sidebar, render_chat_history, render_footer
+from utils.ui_components import init_page, render_sidebar, render_chat_history, render_footer, render_input_hint
 from chat_logic import run_chat_pipeline
 from data_loader import load_product_df, load_sn_order_map
 
@@ -26,6 +26,7 @@ trip_df = render_sidebar()
 render_chat_history()
 
 # 获取用户输入
+render_input_hint()
 user_input = st.chat_input("请输入您的问题...")
 if user_input:
     st.session_state[SESSION_CFG["history"]].append({"role": "user", "content": user_input})

@@ -40,8 +40,8 @@ def run_chat_pipeline(user_input: str, trip_df: pd.DataFrame, sn_order_map: dict
             user_input, trip_prompt, LLM_CFG["model_name"], LLM_CFG["xinference_url"], max_tokens=LLM_CFG["max_tokens_trip"]):
             reply_trip = partial
 
-            trip_box.markdown(f"正在解析脱扣器需求...\n\n{reply_trip}")
-            # trip_box.markdown(f"正在解析脱扣器需求...")
+            # trip_box.markdown(f"正在解析脱扣器需求...\n\n{reply_trip}")
+            trip_box.markdown(f"正在解析脱扣器需求...")
         trip_box.markdown("")
 
         result_trip = extract_trip_info_from_output(reply_trip, func_fields)
