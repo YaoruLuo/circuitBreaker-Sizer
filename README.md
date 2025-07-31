@@ -1,4 +1,4 @@
-```markdown
+
 # 🔌 CircuitBreaker-Sizer · 西门子断路器智能选型助手
 
 基于自然语言大模型（LLM）驱动的西门子 3WA 系列断路器选型助手，支持通过中文需求智能生成产品序列号、匹配脱扣器、订货号与技术参数，帮助用户快速查询西门子3WA断路器产品信息。
@@ -12,12 +12,14 @@
 ```bash
 git clone https://github.com/yourname/circuitBreaker-Sizer.git
 cd circuitBreaker-Sizer
+```
 
 默认采用xinference推理框架（需自行安装），GLM4-Chat模型。
 
 # 安装依赖（推荐使用虚拟环境）
+```
 pip install -r requirements.txt
-````
+```
 
 ---
 
@@ -81,4 +83,4 @@ LLM_CFG = {
 
 > 欢迎 star ⭐️ & fork 🍴 ，一起探索工业智能选型的新范式。
 
-```
+
